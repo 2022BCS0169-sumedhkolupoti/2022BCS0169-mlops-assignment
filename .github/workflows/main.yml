@@ -1,0 +1,48 @@
+name: MLOps CI/CD Pipeline - 2022BCS0169
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  train-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Pull data from DVC
+        run: |
+          # Simulating DVC pull as we don't have real S3 credentials in CI
+          echo "Simulating dvc pull..."
+          python src/prepare_data.py v2
+
+      - name: Run Model Training
+        run: |
+          python src/train_2022BCS0169.py --run "CI Run" --version "v2" --model "logistic"
+
+      - name: Verify Metrics Generation
+        run: |
+          if [ -f metrics_2022BCS0169.json ]; then
+            echo "Metrics JSON generated successfully."
+            cat metrics_2022BCS0169.json
+          else
+            echo "Error: Metrics JSON missing."
+            exit 1
+          fi
+
+      - name: Check Student Identification
+        run: |
+          grep "Sumedh Kolupoti" metrics_2022BCS0169.json
+          grep "2022BCS0169" metrics_2022BCS0169.json

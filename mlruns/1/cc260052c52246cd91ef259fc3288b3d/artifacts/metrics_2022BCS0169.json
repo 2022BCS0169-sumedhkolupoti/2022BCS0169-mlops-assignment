@@ -1,0 +1,10 @@
+{
+    "name": "Sumedh Kolupoti",
+    "roll_no": "2022BCS0169",
+    "run_name": "Check",
+    "data_version": "v1",
+    "accuracy": 0.9,
+    "f1_score": 0.9032258064516129,
+    "model_type": "logistic",
+    "selected_features": "all"
+}

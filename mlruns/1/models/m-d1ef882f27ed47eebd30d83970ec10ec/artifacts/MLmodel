@@ -1,0 +1,23 @@
+artifact_path: /Users/macbookpro/Desktop/ML-OPS ASSIGNMENT/2022BCS0169-mlops-assignment/mlruns/1/models/m-d1ef882f27ed47eebd30d83970ec10ec/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.11.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.10.1
+model_id: m-d1ef882f27ed47eebd30d83970ec10ec
+model_size_bytes: 1576
+model_uuid: m-d1ef882f27ed47eebd30d83970ec10ec
+prompts: null
+run_id: cc260052c52246cd91ef259fc3288b3d
+utc_time_created: '2026-04-01 03:41:28.960787'
